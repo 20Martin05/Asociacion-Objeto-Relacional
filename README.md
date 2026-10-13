@@ -32,12 +32,17 @@ El código está organizado bajo la estructura estándar de Maven de la siguient
 src/main/
  ├── java/
  │   └── U1/
- │       ├── Productos.java       # Entidad JPA que define la estructura de la tabla productos
- │       ├── Productos.sql        # Script SQL para la creación manual de la tabla en PostgreSQL
- │       └── Main.java            # Menú interactivo en consola y lógica CRUD con EntityManager
+ │       ├── entity/
+ │       │   └── Productos.java          # Entidad JPA que define la tabla productos en PostgreSQL
+ │       ├── gui/
+ │       │   ├── VentanaProductos.java   # Interfaz gráfica de usuario (GUI) con Java Swing
+ │       │   └── VentanaProductos.form   # Formulario de diseño visual de IntelliJ IDEA
+ │       └── Main.java                   # Punto de entrada que inicializa y muestra la ventana gráfica
  └── resources/
      ├── META-INF/
-     │   └── persistence.xml      # Unidad de persistencia (postgres), credenciales y propiedades de Hibernate
+     │   └── persistence.xml             # Unidad de persistencia (postgres), credenciales y propiedades de Hibernate
+     ├── sql/
+     │   └── Productos.sql               # Script SQL DDL para creación de tabla en PostgreSQL
      ├── images/
      │   └── Diagrama de Clase -- Corporacion Favorita.jpg  # Captura visual del diagrama de clases UML
      └── uml/
@@ -71,17 +76,16 @@ A continuación se muestra el modelo de clases diseñado en Visual Paradigm para
 
 1. Abre el proyecto en tu IDE favorito (IntelliJ IDEA descargará automáticamente las dependencias del archivo `pom.xml`).
 2. Dirígete a la ruta `src/main/resources/META-INF/persistence.xml` y reemplaza `PON_AQUI_TU_CONTRASEÑA` por la contraseña local de tu usuario `postgres`.
-3. Dirígete a `src/main/java/U1/` y ejecuta la clase principal `Main.java`.
+3. Dirígete a `src/main/java/U1/` y ejecuta la clase principal `Main.java` (o directamente `VentanaProductos.java`).
 
-### ¿Cómo funciona el menú en consola?
+### ¿Cómo interactuar con la Interfaz Gráfica (UI)?
 
-* **1. Ver Tabla Productos:** Consulta todos los productos registrados en la base de datos mediante JPQL (`from Productos`) y los muestra en pantalla.
-* **2. Creación de Nombre, Precio, Cantidad, Categoría:** Solicita los datos del producto (Nombre, Precio unitario, Cantidad en stock y Categoría de supermercado: `LACTEOS`, `CARNES`, `FRUTAS`, `VERDURAS`, `GRANOS`, `PANADERIA`, `BEBIDAS`, `ENLATADOS`, `SNACKS`) y los guarda automáticamente en PostgreSQL.
-* **3. Actualización de Precio, Cantidad, Categoría:** Solicita el ID del producto a modificar. Si existe, actualiza su precio, cantidad y categoría en la base de datos.
-* **4. Borrar un Producto:** Solicita el ID del producto y elimina su registro de forma permanente.
-* **5. Salir de la Tabla:** Cierra las conexiones con PostgreSQL y finaliza el programa de manera segura.
-
-*(Nota: El sistema valida si el ID ingresado existe antes de modificar o eliminar, mostrando un mensaje de aviso en caso de no encontrar coincidencias).*
+* **Tabla de Productos (`JTable`):** Al abrir la aplicación, carga automáticamente todo el inventario desde PostgreSQL en una tabla inferior con barras de desplazamiento.
+* **Selección con Clic:** Al hacer clic sobre cualquier fila de la tabla, los datos de ese producto se cargan automáticamente en las cajas de texto y el selector de categoría.
+* **Guardar (`btnGuardar`):** Ingresa Nombre, Precio, Cantidad y selecciona la Categoría deseada en el desplegable. Al pulsar **Guardar**, el producto se almacena en PostgreSQL y se refresca la tabla al instante.
+* **Actualizar (`btnActualizar`):** Selecciona un producto de la tabla, modifica su precio, cantidad o categoría en el formulario y pulsa **Actualizar** para guardar los cambios en la base de datos.
+* **Eliminar (`btnEliminar`):** Selecciona el producto que deseas quitar y pulsa **Eliminar**. El sistema solicitará confirmación antes de borrar el registro de PostgreSQL.
+* **Limpiar (`btnLimpiar`):** Vacía las cajas de texto del formulario para permitir el ingreso de un nuevo registro desde cero.
 
 ### ¿Dónde se guardan los datos?
 
