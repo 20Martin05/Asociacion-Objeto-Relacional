@@ -35,8 +35,10 @@ src/main/
  │       ├── entity/
  │       │   └── Productos.java          # Entidad JPA que define la tabla productos en PostgreSQL
  │       ├── gui/
- │       │   ├── VentanaProductos.java   # Interfaz gráfica de usuario (GUI) con Java Swing
- │       │   └── VentanaProductos.form   # Formulario de diseño visual de IntelliJ IDEA
+ │       │   ├── base/
+ │       │   │   ├── VentanaProductosUI.java # Componentes visuales y setupUI generado por IntelliJ
+ │       │   │   └── VentanaProductos.form   # Formulario de diseño visual de IntelliJ IDEA
+ │       │   └── VentanaProductos.java   # Controlador de la ventana (CRUD limpio y eventos)
  │       └── Main.java                   # Punto de entrada que inicializa y muestra la ventana gráfica
  └── resources/
      ├── META-INF/
