@@ -1,6 +1,7 @@
 package U1.gui;
 
 import U1.entity.Productos;
+import U1.gui.base.VentanaProductosUI;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -11,17 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class VentanaProductos extends JFrame {
-    private JPanel PanelPrincipal;
-    private JTextField txtPrecio;
-    private JButton btnGuardar;
-    private JButton btnActualizar;
-    private JTextField txtCantidad;
-    private JComboBox Categorias;
-    private JTable Productos;
-    private JTextField txtNombre;
-    private JButton btnEliminar;
-    private JButton btnLimpiar;
+public class VentanaProductos extends VentanaProductosUI {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgres");
     EntityManager em = emf.createEntityManager();
