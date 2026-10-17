@@ -47,7 +47,7 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Project Lombok -->
+        <!-- Lombok disponible para reducir código repetitivo en futuras entidades. -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

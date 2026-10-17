@@ -78,7 +78,7 @@ public class VentanaProductos extends VentanaProductosUI {
         String nombre = txtNombre.getText();
         double precio = Double.parseDouble(txtPrecio.getText());
         int cantidad = Integer.parseInt(txtCantidad.getText());
-        String categoria = Categorias.getSelectedItem().toString();
+        String categoria = (String) Categorias.getSelectedItem();
         Productos nuevo = new Productos(0, nombre, precio, cantidad, categoria);
         em.getTransaction().begin();
         em.persist(nuevo);
@@ -99,7 +99,7 @@ public class VentanaProductos extends VentanaProductosUI {
         String nuevoNombre = txtNombre.getText();
         double nuevoprecio = Double.parseDouble(txtPrecio.getText());
         int nuevacantidad = Integer.parseInt(txtCantidad.getText());
-        String nuevaCategoria = Categorias.getSelectedItem().toString();
+        String nuevaCategoria = (String) Categorias.getSelectedItem();
 
         em.getTransaction().begin();
         Productos actualizar = em.find(Productos.class, id);

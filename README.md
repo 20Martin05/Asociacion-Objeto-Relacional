@@ -47,7 +47,7 @@ src/main/
      │   └── Productos.sql               # Script SQL DDL para creación de tabla en PostgreSQL
      ├── images/
      │   ├── Diagrama de Clase -- Corporacion Favorita.jpg  # Captura visual del diagrama de clases UML
-     │   └── Aplicacion en Ejecución .jpg                   # Captura de la aplicación en ejecución
+     │   └── Aplicacion en Ejecución.jpg                    # Captura de la aplicación en ejecución
      └── uml/
          └── Empresa_ Corporacion Favorita.vpp  # Diagrama de clases UML en Visual Paradigm
 ```
@@ -56,9 +56,7 @@ src/main/
 
 A continuación se muestra el modelo de clases diseñado en Visual Paradigm para la entidad `Productos` de la Empresa Corporación Favorita:
 
-<p align="center">
-  <img src="src/main/resources/images/Diagrama%20de%20Clase%20--%20Corporacion%20Favorita.jpg" alt="Diagrama de Clases UML - Corporación Favorita" width="300"/>
-</p>
+![Diagrama de Clases UML - Corporación Favorita](src/main/resources/images/Diagrama%20de%20Clase%20--%20Corporacion%20Favorita.jpg)
 
 * **Entidad / Clase:** `Productos`
 * **Atributos:**
@@ -77,9 +75,7 @@ A continuación se muestra el modelo de clases diseñado en Visual Paradigm para
 
 La siguiente imagen muestra la aplicación gráfica en ejecución:
 
-<p align="center">
-  <img src="src/main/resources/images/Aplicacion%20en%20Ejecuci%C3%B3n%20.jpg" alt="Aplicación de gestión de productos en ejecución" width="700"/>
-</p>
+![Aplicación de gestión de productos en ejecución](src/main/resources/images/Aplicacion%20en%20Ejecuci%C3%B3n.jpg)
 
 ## 🚀 Instrucciones de Uso
 
