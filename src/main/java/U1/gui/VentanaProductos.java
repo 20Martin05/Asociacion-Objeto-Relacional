@@ -12,17 +12,21 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+// Ventana Swing que permite consultar y administrar productos mediante JPA.
 public class VentanaProductos extends VentanaProductosUI {
 
+    // Recursos JPA utilizados para ejecutar consultas y transacciones.
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgres");
     EntityManager em = emf.createEntityManager();
 
     public VentanaProductos() {
+        // Configuración inicial de la ventana y sus controles.
         setTitle("Gestión de Productos - Corporación Favorita");
         setContentPane(PanelPrincipal);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
 
+        // Categorías disponibles para clasificar los productos.
         Categorias.addItem("LÁCTEOS");
         Categorias.addItem("CARNES");
         Categorias.addItem("FRUTAS");
@@ -33,8 +37,10 @@ public class VentanaProductos extends VentanaProductosUI {
         Categorias.addItem("ENLATADOS");
         Categorias.addItem("SNACKS");
 
+        // Carga los datos existentes al abrir la aplicación.
         listar();
 
+        // Conecta cada botón con la operación CRUD correspondiente.
         btnGuardar.addActionListener(e -> guardar());
         btnActualizar.addActionListener(e -> actualizar());
         btnEliminar.addActionListener(e -> eliminar());
@@ -43,6 +49,7 @@ public class VentanaProductos extends VentanaProductosUI {
         Productos.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                // Copia la fila seleccionada hacia los campos del formulario.
                 int fila = Productos.getSelectedRow();
                 if (fila != -1) {
                     txtNombre.setText(Productos.getValueAt(fila, 1).toString());
@@ -57,6 +64,7 @@ public class VentanaProductos extends VentanaProductosUI {
     }
 
     public void listar() {
+        // Consulta todos los productos y actualiza el modelo de la tabla.
         DefaultTableModel modelo = new DefaultTableModel(new String[]{"ID", "Nombre", "Precio", "Cantidad", "Categoria"}, 0);
         Productos.setModel(modelo);
         List<Productos> lista = em.createQuery("FROM Productos ", Productos.class).getResultList();
@@ -66,6 +74,7 @@ public class VentanaProductos extends VentanaProductosUI {
     }
 
     public void guardar() {
+        // Lee el formulario, crea la entidad y la persiste en una transacción.
         String nombre = txtNombre.getText();
         double precio = Double.parseDouble(txtPrecio.getText());
         int cantidad = Integer.parseInt(txtCantidad.getText());
@@ -79,6 +88,7 @@ public class VentanaProductos extends VentanaProductosUI {
     }
 
     public void actualizar() {
+        // Verifica la selección antes de modificar el producto elegido.
         int fila = Productos.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(this, "Selecciona un producto de la tabla primero");
@@ -106,6 +116,7 @@ public class VentanaProductos extends VentanaProductosUI {
     }
 
     public void eliminar() {
+        // Solicita confirmación y elimina el producto seleccionado.
         int fila = Productos.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(this, "Selecciona un producto de la tabla primero");
@@ -130,6 +141,7 @@ public class VentanaProductos extends VentanaProductosUI {
     }
 
     public void limpiar() {
+        // Restablece los campos editables del formulario.
         txtNombre.setText("");
         txtPrecio.setText("");
         txtCantidad.setText("");

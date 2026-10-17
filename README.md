@@ -1,6 +1,6 @@
 # Sistema de Gestión de Productos (Asociación Objeto-Relacional)
 
-Proyecto de Persistencia de Datos (U1) que implementa un sistema CRUD de gestión de inventario de productos de supermercado con Java, Maven, interfaz interactiva por consola y persistencia de datos relacional en **PostgreSQL** mediante **Jakarta Persistence (JPA)** y el framework **Hibernate ORM**.
+Proyecto de Persistencia de Datos (U1) que implementa un sistema CRUD de gestión de inventario de productos de supermercado con Java, Maven, interfaz gráfica Swing y persistencia de datos relacional en **PostgreSQL** mediante **Jakarta Persistence (JPA)** y el framework **Hibernate ORM**.
 
 El desarrollo aplica el Mapeo Objeto-Relacional (ORM) mediante anotaciones estándar de JPA y gestiona sesiones y transacciones seguras a través de `EntityManager` para garantizar la integridad de los datos en cada operación de lectura y escritura.
 
@@ -8,11 +8,11 @@ El desarrollo aplica el Mapeo Objeto-Relacional (ORM) mediante anotaciones está
 
 * **CRUD Completo:** Creación, lectura, actualización y eliminación de registros (`persist`, `createQuery`, `find`, `merge`, `remove`).
 * **Mapeo Objeto-Relacional (ORM):** Uso de anotaciones estándar (`@Entity`, `@Table`, `@Id`, `@GeneratedValue`, `@Column`) para vincular la clase Java con la tabla SQL sin escribir consultas manuales.
-* **Reducción de Código (Lombok):** Generación automática de constructores, *getters*, *setters* y `toString()` mediante anotaciones (`@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`).
+* **Modelo de entidad Java:** La entidad `Productos` incluye constructor vacío, constructor completo, *getters*, *setters* y `toString()`.
 * **Pool de Conexiones (HikariCP):** Integración con `HikariCP` para una gestión rápida y eficiente de las conexiones hacia PostgreSQL.
 * **Identificadores Únicos (IDs):** Generación automática de llaves primarias autoincrementales (`SERIAL` / `GenerationType.IDENTITY`) en PostgreSQL.
 * **Gestión de Transacciones (JPA):** Control estricto de transacciones mediante `EntityManager` (`em.getTransaction().begin()`, `em.getTransaction().commit()`).
-* **Gestión Segura de Recursos:** Implementación de bloques `try-with-resources` para el cierre automático de `EntityManagerFactory`, `EntityManager` y `Scanner`, evitando fugas de memoria.
+* **Gestión de persistencia:** Uso de `EntityManagerFactory` y `EntityManager` para realizar consultas y transacciones JPA.
 * **Validación de Existencia:** Comprobación de registros nulos (`!= null`) antes de ejecutar actualizaciones o eliminaciones por ID.
 
 ## 🛠️ Requisitos Previos
@@ -46,7 +46,8 @@ src/main/
      ├── sql/
      │   └── Productos.sql               # Script SQL DDL para creación de tabla en PostgreSQL
      ├── images/
-     │   └── Diagrama de Clase -- Corporacion Favorita.jpg  # Captura visual del diagrama de clases UML
+     │   ├── Diagrama de Clase -- Corporacion Favorita.jpg  # Captura visual del diagrama de clases UML
+     │   └── Aplicacion en Ejecución .jpg                   # Captura de la aplicación en ejecución
      └── uml/
          └── Empresa_ Corporacion Favorita.vpp  # Diagrama de clases UML en Visual Paradigm
 ```
@@ -72,13 +73,47 @@ A continuación se muestra el modelo de clases diseñado en Visual Paradigm para
   * `+ Actualizar()` : Modificación de precio, cantidad y categoría de un producto existente.
   * `+ Eliminar()` : Supresión de un producto por su identificador.
 
+## 🖥️ Evidencia de ejecución
+
+La siguiente imagen muestra la aplicación gráfica en ejecución:
+
+<p align="center">
+  <img src="src/main/resources/images/Aplicacion%20en%20Ejecuci%C3%B3n%20.jpg" alt="Aplicación de gestión de productos en ejecución" width="700"/>
+</p>
+
 ## 🚀 Instrucciones de Uso
 
-### ¿Cómo configurar y ejecutar el programa?
+### 1. Clonar el proyecto
 
-1. Abre el proyecto en tu IDE favorito (IntelliJ IDEA descargará automáticamente las dependencias del archivo `pom.xml`).
-2. Dirígete a la ruta `src/main/resources/META-INF/persistence.xml` y reemplaza `PON_AQUI_TU_CONTRASEÑA` por la contraseña local de tu usuario `postgres`.
-3. Dirígete a `src/main/java/U1/` y ejecuta la clase principal `Main.java` (o directamente `VentanaProductos.java`).
+Desde una terminal, ejecuta:
+
+```bash
+git clone https://github.com/20Martin05/Asociacion-Objeto-Relacional.git
+cd Asociacion-Objeto-Relacional
+```
+
+### 2. Preparar PostgreSQL
+
+1. Inicia el servidor PostgreSQL en el puerto `5432`.
+2. Verifica que exista la base de datos `postgres`.
+3. Asegúrate de conocer la contraseña del usuario `postgres`.
+
+La aplicación crea o actualiza automáticamente la tabla `productos` mediante Hibernate. El script opcional `src/main/resources/sql/Productos.sql` permite crear la tabla manualmente, pero contiene `DROP TABLE IF EXISTS` y debe ejecutarse con precaución.
+
+### 3. Configurar y ejecutar el programa
+
+1. Abre la carpeta clonada en IntelliJ IDEA, Eclipse, NetBeans o VS Code como proyecto Maven.
+2. Dirígete a `src/main/resources/META-INF/persistence.xml` y reemplaza `PON_AQUI_TU_CONTRASEÑA` por la contraseña local de tu usuario `postgres`.
+3. Recarga las dependencias Maven.
+4. Ejecuta la clase principal `U1.Main`.
+
+También puedes compilar el proyecto desde una terminal:
+
+```bash
+mvn clean package
+```
+
+Después de compilar, ejecuta `U1.Main` desde el IDE con el JDK 21 o superior configurado.
 
 ### ¿Cómo interactuar con la Interfaz Gráfica (UI)?
 

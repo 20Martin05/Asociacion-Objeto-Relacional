@@ -2,29 +2,37 @@ package U1.entity;
 
 import jakarta.persistence.*;
 
+// Entidad JPA que representa los registros de la tabla productos.
 @Entity
 @Table(name = "productos")
 public class Productos {
 
+    // Identificador generado automáticamente por PostgreSQL.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    // Nombre comercial del producto.
     @Column
     private String nombre;
 
+    // Precio unitario de venta.
     @Column
     private double precio;
 
+    // Cantidad disponible en inventario.
     @Column
     private int cantidad;
 
+    // Categoría a la que pertenece el producto.
     @Column
     private String categoria;
 
+    // Constructor requerido por JPA.
     public Productos() {
     }
 
+    // Constructor utilizado para crear productos desde la interfaz.
     public Productos(int id, String nombre, double precio, int cantidad, String categoria) {
         this.id = id;
         this.nombre = nombre;
