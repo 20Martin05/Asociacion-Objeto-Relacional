@@ -1,10 +1,14 @@
 package U1.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 // Entidad JPA que representa los registros de la tabla productos.
 @Entity
 @Table(name = "productos")
+@Getter
+@Setter
 public class Productos {
 
     // Identificador generado automáticamente por PostgreSQL.
@@ -38,46 +42,6 @@ public class Productos {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
-        this.categoria = categoria;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 

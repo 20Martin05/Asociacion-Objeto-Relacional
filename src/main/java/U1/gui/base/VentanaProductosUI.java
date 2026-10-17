@@ -9,7 +9,7 @@ public class VentanaProductosUI extends JFrame {
     protected JButton btnGuardar;
     protected JButton btnActualizar;
     protected JTextField txtCantidad;
-    protected JComboBox Categorias;
+    protected JComboBox<String> Categorias;
     protected JTable Productos;
     protected JTextField txtNombre;
     protected JButton btnEliminar;
@@ -45,7 +45,7 @@ public class VentanaProductosUI extends JFrame {
         final JLabel label3 = new JLabel();
         label3.setText("Categoria");
         PanelPrincipal.add(label3, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(60, 43), null, 0, false));
-        Categorias = new JComboBox();
+        Categorias = new JComboBox<>();
         PanelPrincipal.add(Categorias, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JScrollPane scrollPane1 = new JScrollPane();
         PanelPrincipal.add(scrollPane1, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 4, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
