@@ -14,7 +14,7 @@
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <!-- Reemplazar este marcador por la contraseña local de PostgreSQL. -->
-            <property name="jakarta.persistence.jdbc.password" value="Mystery2005Ghostly2005"/>
+            <property name="jakarta.persistence.jdbc.password" value="PON_AQUI_TU_CONTRASEÑA"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
             <!-- Propiedades de Hibernate -->

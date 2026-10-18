@@ -10,7 +10,7 @@ El desarrollo aplica el Mapeo Objeto-Relacional (ORM) mediante anotaciones está
 * **Mapeo Objeto-Relacional (ORM):** Uso de anotaciones estándar (`@Entity`, `@Table`, `@Id`, `@GeneratedValue`, `@Column`) para vincular la clase Java con la tabla SQL sin escribir consultas manuales.
 * **Modelo de entidad Java:** La entidad `Productos` incluye constructor vacío, constructor completo, *getters*, *setters* y `toString()`.
 * **Pool de Conexiones (HikariCP):** Integración con `HikariCP` para una gestión rápida y eficiente de las conexiones hacia PostgreSQL.
-* **Identificadores Únicos (IDs):** Generación automática de llaves primarias autoincrementales (`SERIAL` / `GenerationType.IDENTITY`) en PostgreSQL.
+* **Identificadores Únicos (ID):** Generación automática de llaves primarias autoincrementales (`SERIAL` / `GenerationType.IDENTITY`) en PostgreSQL.
 * **Gestión de Transacciones (JPA):** Control estricto de transacciones mediante `EntityManager` (`em.getTransaction().begin()`, `em.getTransaction().commit()`).
 * **Gestión de persistencia:** Uso de `EntityManagerFactory` y `EntityManager` para realizar consultas y transacciones JPA.
 * **Validación de Existencia:** Comprobación de registros nulos (`!= null`) antes de ejecutar actualizaciones o eliminaciones por ID.
@@ -22,7 +22,7 @@ Para compilar y ejecutar este proyecto correctamente, necesitas tener instalado:
 * **Java Development Kit (JDK)** versión 21 o superior.
 * **Apache Maven** (gestor de dependencias y construcción).
 * **PostgreSQL** (servidor de base de datos activo en el puerto `5432`).
-* Un entorno de desarrollo (IDE) como **IntelliJ IDEA** (recomendado), Eclipse o NetBeans.
+* Un entorno de desarrollo (IDE) como **IntelliJ IDEA**, Eclipse, NetBeans o VS Code.
 
 ## 📂 Estructura del Proyecto
 
@@ -102,6 +102,9 @@ La aplicación crea o actualiza automáticamente la tabla `productos` mediante H
 2. Dirígete a `src/main/resources/META-INF/persistence.xml` y reemplaza `PON_AQUI_TU_CONTRASEÑA` por la contraseña local de tu usuario `postgres`.
 3. Recarga las dependencias Maven.
 4. Ejecuta la clase principal `U1.Main`.
+
+El proyecto no depende del diseñador visual de IntelliJ para ejecutarse: la interfaz generada está incluida en `VentanaProductosUI.java` y `forms_rt` proporciona las clases de ejecución necesarias. 
+Por eso puede abrirse como proyecto Maven en cualquier IDE compatible con Java 21.
 
 También puedes compilar el proyecto desde una terminal:
 
